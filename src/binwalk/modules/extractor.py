@@ -555,7 +555,14 @@ class Extractor(Module):
                 # extracted to ${CWD}/_basename.extracted, so we just set the subdir
                 # variable to a blank string when an IndexError is encountered.
                 try:
-                    subdir = basedir.split(self.directory)[1][1:]
+                    subdir = basedir.split(self.directory)
+                    # If self.directory is / we end up with an empty first element
+                    # which will mean /path ends up incorrecly setting subdir of /ath.
+                    if not subdir[0]:
+                        # To avoid this issue, pop the empty element
+                        subdir.pop()
+
+                    subdir = subdir[1][1:]
                 except IndexError as e:
                     subdir = ""
             else:
