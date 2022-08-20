@@ -248,7 +248,7 @@ ZKRdu7NkEp9EYhvl/vM=
         '''
         try:
             tmp_dir = tempfile.mkdtemp()
-            gpg = GPG(gnupghome=tmp_dir)
+            gpg = GPG(homedir=tmp_dir)
             gpg.import_keys(key)
             decrypted_data = gpg.decrypt(encrypted_firmware)
         finally:
