@@ -64,6 +64,8 @@ $ sudo cp cramfs/cramfsck cramfs/mkcramfs /usr/local/bin/
 $ sudo apt-get install zlib1g-dev liblzma-dev liblzo2-dev
 $ git clone https://github.com/devttys0/sasquatch
 $ (cd sasquatch && ./build.sh)
+# GCC 10 workaround
+$ (cd sasquatch && CFLAGS=-fcommon ./build.sh)
 ```
 
 ```bash

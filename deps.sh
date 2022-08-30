@@ -84,10 +84,19 @@ function install_yaffshiv
 function install_sasquatch
 {
     git clone --quiet --depth 1 --branch "master" https://github.com/devttys0/sasquatch
-    (cd sasquatch &&
-        wget https://github.com/devttys0/sasquatch/pull/47.patch &&
-        patch -p1 < 47.patch &&
-        $SUDO ./build.sh)
+
+    if /bin/bash -c "`which gcc 2>/dev/null` --version" | grep -q ' 1[0-9].'; then
+      (cd sasquatch &&
+          wget https://github.com/devttys0/sasquatch/pull/47.patch &&
+          patch -p1 < 47.patch &&
+          $SUDO CFLAGS=-fcommon ./build.sh)
+    else
+      (cd sasquatch &&
+          wget https://github.com/devttys0/sasquatch/pull/47.patch &&
+          patch -p1 < 47.patch &&
+          $SUDO ./build.sh)
+    fi
+
     $SUDO rm -rf sasquatch
 }
 
