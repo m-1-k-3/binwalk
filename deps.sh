@@ -112,7 +112,7 @@ function install_unstuff
     mkdir -p /tmp/unstuff
     cd /tmp/unstuff
 
-    wget -O - http://downloads.tuxfamily.org/sdtraces/stuffit520.611linux-i386.tar.gz | tar -zxv
+    wget -O - https://downloads.tuxfamily.org/sdtraces/BottinHTML/stuffit520.611linux-i386.tar.gz | tar -zxv
     $SUDO cp bin/unstuff /usr/local/bin/
     cd -
     rm -rf /tmp/unstuff
