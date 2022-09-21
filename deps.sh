@@ -266,7 +266,7 @@ install_jefferson
 install_unstuff
 install_ubireader
 
-if [[ $distro_version = @("18"|"20") ]]
+if [[ $distro_version = @("18"|"19"|"20") ]]
 then
 install_cramfstools
 fi
