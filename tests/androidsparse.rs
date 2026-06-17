@@ -151,7 +151,10 @@ fn header_with_overflowing_total_size_is_rejected() {
 
     // And nothing should have been written.
     let written: u64 = walk_size(&outdir);
-    assert_eq!(written, 0, "extractor wrote {written} bytes for a rejected image");
+    assert_eq!(
+        written, 0,
+        "extractor wrote {written} bytes for a rejected image"
+    );
 
     let _ = std::fs::remove_dir_all(&outdir);
 }
@@ -232,7 +235,10 @@ fn valid_minimal_sparse_image_extracts_successfully() {
 
     let outdir = test_output_dir("valid_minimal");
     let result = extract_android_sparse(&img, 0, Some(&outdir));
-    assert!(result.success, "minimal valid sparse image failed to extract");
+    assert!(
+        result.success,
+        "minimal valid sparse image failed to extract"
+    );
 
     let unsparsed = std::path::Path::new(&outdir).join("unsparsed.img");
     let bytes = std::fs::read(&unsparsed).expect("expected output file");
